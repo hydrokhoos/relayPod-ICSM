@@ -23,14 +23,14 @@ kubectl apply -f relayPod.yaml
 ## Usage
 1. Provide content:
 ```sh
-kubeclt exec deployment/ndn-node1 -- /bin/bash -c "echo 'Hello, world' > /sample.txt"
-kubeclt exec deployment/ndn-node1 -- /bin/bash -c "nlsrc advertise /sample.txt"
-kubeclt exec deployment/ndn-node1 -- /bin/bash -c "ndnputchunks /sample.txt < /sample.txt"
+kubectl exec deployment/ndn-node1 -- /bin/bash -c "echo 'Hello, world' > /sample.txt"
+kubectl exec deployment/ndn-node1 -- /bin/bash -c "nlsrc advertise /sample.txt"
+kubectl exec deployment/ndn-node1 -- /bin/bash -c "ndnputchunks /sample.txt < /sample.txt"
 ```
 
 2. Request relaid content from another node:
 ```sh
-kubectl deployment/ndn-node3 -- /bin/bash -c "ndncatchunks /relay/sample.txt"
+kubectl exec deployment/ndn-node3 -- /bin/bash -c "ndncatchunks /relay/sample.txt"
 ```
 ```plain text
 All segments have been received.
